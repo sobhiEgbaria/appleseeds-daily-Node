@@ -1,11 +1,16 @@
 //2.1 ===> take input form user in the terminal
-let a = +process.argv[2];
-let b = +process.argv[3];
-console.log(a + b);
+// let a = +process.argv[2];
+// let b = +process.argv[3];
+// console.log(a + b);
 
-// const fs = require("fs");
+//2.1 ===> add and remove condition
+const command = process.argv[2];
+if (command === "add") {
+  console.log("the note was added");
+} else {
+  console.log("not added");
+}
 
-// fs.writeFileSync("readme.txt", "this is the readme");
 // fs.copyFile("./readme.txt", "copyreadme.txt", (err) => {
 //   if (err) {
 //     console.log(err);
@@ -23,4 +28,4 @@ console.log(a + b);
 // files.forEach((file) => {
 //   console.log(file);
 // });
-console.log("this");
+// console.log("this");
