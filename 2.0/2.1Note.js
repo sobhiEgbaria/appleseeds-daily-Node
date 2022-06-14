@@ -1,5 +1,6 @@
 const fs = require("fs");
-const loadNote = function () {
+
+const loadNote = () => {
   try {
     const noteBuffer = fs.readFileSync("2.1Json.json");
     const noteJson = noteBuffer.toString();
@@ -10,20 +11,19 @@ const loadNote = function () {
   }
 };
 
-const saveNote = function (notes) {
+const saveNote = (notes) => {
   const noteJson = JSON.stringify(notes);
   fs.writeFileSync("2.1Json.json", noteJson);
 };
 
-const addNote = function (title, body) {
+const addNote = (title, body) => {
   const notes = loadNote();
 
-  const duplicateNote = notes.filter((note) => {
-    if (title === note.title) {
-      return true;
-    }
-  });
-  if (duplicateNote.length === 0) {
+  //   const duplicateNotes = notes.filter((note) => note.title === title);
+  const duplicateNote = notes.find((note) => note.title === title);
+
+  if (!duplicateNote) {
+    // (!duplicateNote) === (duplicateNote === undefine)
     notes.push({
       title: title,
       body: body,
@@ -36,14 +36,11 @@ const addNote = function (title, body) {
   saveNote(notes);
 };
 
-const removeNote = function (title) {
+const removeNote = (title) => {
   const notes = loadNote();
 
-  const afterRemove = notes.filter((note) => {
-    if (note.title !== title) {
-      return true;
-    }
-  });
+  const afterRemove = notes.filter((note) => note.title !== title);
+
   if (afterRemove.length === notes.length) {
     console.log("no note was deleted");
   } else {
@@ -52,7 +49,7 @@ const removeNote = function (title) {
   saveNote(afterRemove);
 };
 
-const updateNote = function (title, body) {
+const updateNote = (title, body) => {
   const notes = loadNote();
   const updatingNote = notes.map((note) => {
     if (title === note.title) {
@@ -64,8 +61,20 @@ const updateNote = function (title, body) {
   saveNote(updatingNote);
 };
 
+const readNote = (title, body) => {
+  const notes = loadNote();
+  const theNoteToRead = notes.find((note) => note.title === title);
+
+  if (theNoteToRead) {
+    console.log(theNoteToRead.body);
+  } else {
+    console.log("no note to read");
+  }
+};
+
 module.exports = {
   addNote: addNote,
   removeNote: removeNote,
   updateNote: updateNote,
+  readNote: readNote,
 };
