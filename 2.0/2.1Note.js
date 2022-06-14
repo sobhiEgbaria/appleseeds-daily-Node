@@ -36,7 +36,21 @@ const addNote = function (title, body) {
   saveNote(notes);
 };
 
-const removeNote = function () {};
+const removeNote = function (title) {
+  const notes = loadNote();
+
+  const afterRemove = notes.filter((note) => {
+    if (note.title !== title) {
+      return true;
+    }
+  });
+  if (afterRemove.length === notes.length) {
+    console.log("no note was deleted");
+  } else {
+    console.log("done deleting");
+  }
+  saveNote(afterRemove);
+};
 
 module.exports = {
   addNote: addNote,
