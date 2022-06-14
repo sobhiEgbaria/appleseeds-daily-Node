@@ -1,3 +1,4 @@
+const note = require("./2.1Note");
 // //2.1 ===> take input form user in the terminal
 // let a = +process.argv[2];
 // let b = +process.argv[3];
@@ -12,11 +13,11 @@
 //   console.log("not added");
 // }
 
-// 2.2 ==> using yarges to add and remove....
+// 2.2 ==> using yargs to add and remove....
 const { demandOption, argv } = require("yargs");
 const yargs = require("yargs"); // npm package to to parsing arguments
 
-//2.2.1 create add command
+//2.2.1  add command
 yargs.command({
   command: "add",
   describe: "(add a new note)",
@@ -33,11 +34,11 @@ yargs.command({
     },
   },
   handler: function () {
-    console.log("title: " + argv.title + " body: " + argv.body);
+    note.addNote(argv.title, argv.body);
   },
 });
 
-// 2.2.2 create Delete command
+// 2.2.2  Delete command
 yargs.command({
   command: "delete",
   describe: "(Delete a new note)",
@@ -46,7 +47,7 @@ yargs.command({
   },
 });
 
-// 2.2.3 create update command
+// 2.2.3  update command
 yargs.command({
   command: "update",
   describe: "update the note",
@@ -55,7 +56,7 @@ yargs.command({
   },
 });
 
-// 2.2.4 create read command
+// 2.2.4  read command
 yargs.command({
   command: "read",
   describe: "read the note",
