@@ -27,7 +27,6 @@ const fs = require("fs");
 // fs.writeFileSync("1-json.json", book2Json); // create json file
 
 // 3.0 ===> read data from json file
-// 3.0 ===> read data from json file
 
 // const dataBuffer = fs.readFileSync("1-json.json"); // get the data as a binary data
 // console.log(dataBuffer);

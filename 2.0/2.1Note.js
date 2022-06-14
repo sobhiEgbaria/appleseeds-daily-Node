@@ -10,9 +10,30 @@ const loadNote = function () {
   }
 };
 
+const saveNote = function (notes) {
+  const noteJson = JSON.stringify(notes);
+  fs.writeFileSync("2.1Json.json", noteJson);
+};
+
 const addNote = function (title, body) {
-  const note = loadNote();
-  console.log(note);
+  const notes = loadNote();
+
+  const duplicateNote = notes.filter((note) => {
+    if (title === note.title) {
+      return true;
+    }
+  });
+  if (duplicateNote.length === 0) {
+    notes.push({
+      title: title,
+      body: body,
+    });
+    console.log("done the note was added");
+  } else {
+    console.log("the note was taken");
+  }
+
+  saveNote(notes);
 };
 
 const removeNote = function () {};
