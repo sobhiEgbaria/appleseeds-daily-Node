@@ -52,7 +52,20 @@ const removeNote = function (title) {
   saveNote(afterRemove);
 };
 
+const updateNote = function (title, body) {
+  const notes = loadNote();
+  const updatingNote = notes.map((note) => {
+    if (title === note.title) {
+      note.body = body;
+    }
+    return note;
+  });
+
+  saveNote(updatingNote);
+};
+
 module.exports = {
   addNote: addNote,
   removeNote: removeNote,
+  updateNote: updateNote,
 };

@@ -1,4 +1,4 @@
-const note = require("./2.1Note");
+const notes = require("./2.1Note");
 // //2.1 ===> take input form user in the terminal
 // let a = +process.argv[2];
 // let b = +process.argv[3];
@@ -34,7 +34,7 @@ yargs.command({
     },
   },
   handler: function () {
-    note.addNote(argv.title, argv.body);
+    notes.addNote(argv.title, argv.body);
   },
 });
 
@@ -51,7 +51,7 @@ yargs.command({
   },
 
   handler: function (argv) {
-    note.removeNote(argv.title);
+    notes.removeNote(argv.title);
   },
 });
 
@@ -59,8 +59,20 @@ yargs.command({
 yargs.command({
   command: "update",
   describe: "update the note",
+  builder: {
+    title: {
+      describe: "note title",
+      demandOption: true,
+      type: "string",
+    },
+    body: {
+      describe: "note title",
+      demandOption: true,
+      type: "string",
+    },
+  },
   handler: function () {
-    console.log("done... updating");
+    notes.updateNote(argv.title, argv.body);
   },
 });
 
