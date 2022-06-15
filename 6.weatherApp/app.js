@@ -21,7 +21,7 @@ request({ url: url, json: true }, (error, response) => {
     console.log("internet connection falls ");
   } else {
     console.log(
-      `${response.body.current.weather_descriptions[0]}. the temperature is ${response.body.current.temperature} and it feels like ${response.body.current.feelslike}`
+      `${response.body.current.weather_descriptions[0]}.\nthe temperature is ${response.body.current.temperature} and it feels like ${response.body.current.feelslike}`
     );
   }
 });
