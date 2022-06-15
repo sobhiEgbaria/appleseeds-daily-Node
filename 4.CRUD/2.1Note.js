@@ -25,6 +25,7 @@ const addNote = (title, body) => {
   debugger;
   if (!duplicateNote) {
     // (!duplicateNote) === (duplicateNote === undefine)
+
     notes.push({
       title: title,
       body: body,
