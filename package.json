@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "nodemon": "^2.0.16",
     "request": "^2.88.0",

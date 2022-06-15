@@ -15,9 +15,13 @@
 
 const request = require("request");
 const url =
-  "http://api.weatherstack.com/current?access_key=2ffbd6a8aabd6006d001a3909f3db77f&query=37.8267,-122.4233&units=f";
+  "http://api.weatherstack.com/current?access_key=2ffbd6a8aabd6006d001a3909f3db77f&query=37.8267,-122.4233&";
 request({ url: url, json: true }, (error, response) => {
-  console.log(
-    `${response.body.current.weather_descriptions[0]}. the temperature is ${response.body.current.temperature} and it feels like ${response.body.current.feelslike}`
-  );
+  if (error) {
+    console.log("internet connection falls ");
+  } else {
+    console.log(
+      `${response.body.current.weather_descriptions[0]}. the temperature is ${response.body.current.temperature} and it feels like ${response.body.current.feelslike}`
+    );
+  }
 });
