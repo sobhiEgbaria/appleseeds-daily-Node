@@ -46,14 +46,14 @@ import axios from "axios";
 
 // ==> axios
 
-// axios
-//   .get("https://cat-fact.herokuapp.com/facts")
-//   .then((response) => {
-//     console.log(response.data);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+axios
+  .get("https://cat-fact.herokuapp.com/facts")
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 //==> request method
 const request = require("request");
