@@ -5,3 +5,18 @@ h1 {
 img {
   width: 250px;
 }
+
+.weather,
+.nav,
+p,
+.a,
+.res {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h4 {
+  margin: 5px;
+  padding: 5px;
+  color: gray;
+}

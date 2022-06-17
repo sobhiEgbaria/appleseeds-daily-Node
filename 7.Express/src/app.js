@@ -7,6 +7,8 @@ const __dirname = dirname(__filename);
 import express from "express";
 import { aboutRouter } from "./about-router.js";
 
+import { weatherStack } from "../../6.weatherApp/callbacksApi.js";
+
 const app = express();
 
 //1.0 ==> middleware ==> (app.use) function that run with every request
@@ -52,30 +54,45 @@ const app = express();
 const publicPath = path.join(__dirname, "../public");
 app.use(express.static(publicPath));
 
-////html file as a dynamic home page
+////robot page route using get and hbs (dynamic)
 const viewsPath = path.join(__dirname, "../public");
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
-
-app.get("/", (req, res, next) => {
-  res.render("index");
+app.get("/robot", (req, res, next) => {
+  res.render("robot");
 });
 
-app.use(aboutRouter);
+//index route using get and hbs file (dynamic)
+const weatherPath = path.join(__dirname, "../public");
+app.set("weather", weatherPath);
+app.get("/", (req, res, next) => {
+  res.render("weather");
+});
 
-app.get("/weather", (req, res, next) => {
-  res.send({
-    name: "sobhi",
-    age: "12",
+app.get("/weather", (req, res) => {
+  if (!req.query.address) {
+    return res.send({ error: "pleas set an address" });
+  }
+
+  weatherStack(req.query.address, (resData) => {
+    res.send({
+      location: req.query.address,
+      forecast: resData,
+    });
   });
 });
 
+// about page using
+app.use(aboutRouter);
+
+// error page
 app.use((req, res, next) => {
   res.send("<h1>ERROR 404 <h1>");
 });
 
+// 8 1.0 ==>
+
+// set up the server up
 app.listen(3000, () => {
   console.log("the server listen in port 3000 ");
 });
-
-// 1.4 ==> the request method (post)
