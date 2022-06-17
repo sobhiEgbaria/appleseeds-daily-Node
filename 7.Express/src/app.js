@@ -62,7 +62,7 @@ app.get("/robot", (req, res, next) => {
   res.render("robot");
 });
 
-//index route using get and hbs file (dynamic)
+//index route using get and hbs file (dynamic) with  weatherStack callback
 const weatherPath = path.join(__dirname, "../public");
 app.set("weather", weatherPath);
 app.get("/", (req, res, next) => {
@@ -90,9 +90,9 @@ app.use((req, res, next) => {
   res.send("<h1>ERROR 404 <h1>");
 });
 
-// 8 1.0 ==>
-
 // set up the server up
 app.listen(3000, () => {
   console.log("the server listen in port 3000 ");
 });
+
+// ===> post request
