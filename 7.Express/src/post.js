@@ -46,6 +46,7 @@ app.post("/", (req, res) => {
   res.send(201);
 });
 
+// delete the last element
 app.delete("/", (req, res) => {
   players.pop();
   res.send(201);
