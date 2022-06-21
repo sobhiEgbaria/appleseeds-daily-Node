@@ -32,13 +32,11 @@ app.post("/", (req, res, next) => {
 
     let db = client.db("usersEx");
 
-    db.collection("users")
-      .insertOne({
-        name: req.body.name,
-        age: +req.body.age,
-      })
-      .then(() => {
-        client.close();
-      });
+    db.collection("users").insertOne({
+      name: req.body.name,
+      age: +req.body.age,
+    });
+
+    // client.close();
   });
 });
