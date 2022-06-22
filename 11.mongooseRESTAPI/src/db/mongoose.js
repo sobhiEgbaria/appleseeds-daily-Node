@@ -1,9 +1,12 @@
+// npm i validator
+// npm i mongoose@6.4.0
+
 import { mongoose } from "mongoose";
 import validator from "validator";
 
 mongoose.connect("mongodb://127.0.0.1:27017/task-manager-api");
 
-// user model
+// user model collection
 const User = mongoose.model("User", {
   name: { type: String, required: true },
   age: {
@@ -67,7 +70,7 @@ const Tasks = mongoose.model("Tasks", {
 });
 
 const homeWork = new Tasks({
-  description: "the first home work                                      ",
+  description: "the first home work   ",
   completed: true,
 });
 

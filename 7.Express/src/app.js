@@ -10,6 +10,7 @@ import { aboutRouter } from "./about-router.js";
 import { weatherStack } from "../../6.weatherApp/callbacksApi.js";
 
 const app = express();
+const PORT = 3000;
 
 //1.0 ==> middleware ==> (app.use) function that run with every request
 
@@ -91,8 +92,8 @@ app.use((req, res, next) => {
 });
 
 // set up the server up
-app.listen(3000, () => {
-  console.log("the server listen in port 3000 ");
+app.listen(PORT, () => {
+  console.log(`the server listen in port ${PORT} `);
 });
 
 // ===> post request
