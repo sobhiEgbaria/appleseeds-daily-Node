@@ -6,12 +6,13 @@ import mongoose from "mongoose";
 export const Tasks = mongoose.model("Tasks", {
   description: {
     type: String,
-    required: true,
+
     trim: true,
   },
   completed: {
     type: Boolean,
     default: false,
+    required: true,
   },
 });
 
