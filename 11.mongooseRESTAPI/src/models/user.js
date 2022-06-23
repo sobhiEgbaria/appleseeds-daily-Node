@@ -1,3 +1,5 @@
+//// responsibility (1. define the user model)
+
 import mongoose from "mongoose";
 import validator from "validator";
 
@@ -34,3 +36,20 @@ export const User = mongoose.model("User", {
     },
   },
 });
+
+// ====> add user to database and save ( create new instances )
+
+// const me = new User({
+//   name: "sobhi",
+//   age: 29,
+//   Email: "gogo@gmail.com",
+//   password: "asasdasdasdasdas",
+// });
+
+// me.save()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
